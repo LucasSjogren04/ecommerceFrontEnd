@@ -1,43 +1,33 @@
+import { table } from "console"
+import { SearchForProducts } from "../lib/data"
+import API_URL from "../config"
+
 export default async function AdminProductTable() {
-    
-    return(
-        <tbody className="bg-white">
-            {invoices?.map((invoice) => (
-                <tr
-                    key={invoice.id}
-                    className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
-                >
-                    <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                        <div className="flex items-center gap-3">
-                            <Image
-                                src={invoice.image_url}
-                                className="rounded-full"
-                                width={28}
-                                height={28}
-                                alt={`${invoice.name}'s profile picture`}
-                            />
-                            <p>{invoice.name}</p>
-                        </div>
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-3">
-                        {invoice.email}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-3">
-                        {formatCurrency(invoice.amount)}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-3">
-                        {formatDateToLocal(invoice.date)}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-3">
-                        <InvoiceStatus status={invoice.status} />
-                    </td>
-                    <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                        <div className="flex justify-end gap-3">
-                            <UpdateInvoice id={invoice.id} />
-                            <DeleteInvoice id={invoice.id} />
-                        </div>
-                    </td>
-                </tr>
-            ))}
-        </tbody>)
+    const response = await fetch(`${API_URL}/Product/GetListOfAllProducts/`);
+    const responseData = await response.json();
+    return (
+
+        <div className="flex justify-center">
+            <table className="">
+                <thead className="bg-cyan-400">
+                    <tr className="">
+                        <th className="px-4 py-2">ProductId</th>
+                        <th className="px-4 py-2">ProductName</th>
+                        <th className="px-4 py-2">ProductPrice</th>
+                        <th className="px-4 py-2">ProductPictureURL</th>
+                    </tr>
+                </thead>
+                <tbody className="bg-gray-400">
+                    {responseData?.map((results: any) => (
+                        <tr key={results.ProductId}>
+                            <td className="px-4 py-2">{results.productId}</td>
+                            <td className="px-4 py-2">{results.productName}</td>
+                            <td className="px-4 py-2">{results.productPrice}</td>
+                            <td className="px-4 py-2">{results.productPictureURL}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    )
 }
