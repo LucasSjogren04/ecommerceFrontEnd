@@ -8,9 +8,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set('query', term);
+      params.set('q', term);
     } else {
-      params.delete('query');
+      params.delete('q');
     }
     replace(`${pathname}?${params.toString()}`);
   }
@@ -26,7 +26,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
-        defaultValue={searchParams.get('query')?.toString()}
+        defaultValue={searchParams.get('q')?.toString()}
       />
     </div>
   );
