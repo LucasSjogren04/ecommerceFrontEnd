@@ -2,7 +2,11 @@ import { table } from "console"
 import { SearchForProducts } from "../lib/data"
 import {API_URL} from "../config"
 
-export default async function AdminProductTable() {
+interface AdminProductTableProps {
+    chooseProductForEdit: (productId: string) => void;
+}
+
+export default async function AdminProductTable({ chooseProductForEdit }: AdminProductTableProps) {
     const response = await fetch(`${API_URL}/Product/GetListOfAllProducts/`);
     const responseData = await response.json();
     return (
