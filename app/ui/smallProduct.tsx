@@ -11,7 +11,6 @@ export default function SmallProduct({
     productPictureURL: string;
     productPrice: string;
 }) {
-    console.log("productURLSlug:", productURLSlug); // Log the value here
     return (
 
         <Link href={`/products/${productURLSlug}`}>

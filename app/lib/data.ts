@@ -1,5 +1,5 @@
 import { ApiError } from "next/dist/server/api-utils";
-import API_URL from "../config";
+import { API_URL } from "../config";
 
 export async function GetProduct(productId : string,) {  
     try {
@@ -15,7 +15,6 @@ export async function GetProduct(productId : string,) {
 }
 
 export async function SearchForProducts(productName : string) {
-    console.log("Searhcing for products")
     try {
         const response = await fetch(`${API_URL}/api/Product/SearchForProducts/${productName}`);
         if (!response.ok) {

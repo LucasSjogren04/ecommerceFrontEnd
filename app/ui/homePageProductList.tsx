@@ -1,11 +1,10 @@
 import { API_URL, pictureURL } from "../config";
 import SmallProduct from "./smallProduct";
 export default async function HomePageProductList({ query = "" }: { query?: string; }) {
-    console.log(`${API_URL}/Product/SearchForProducts/${query}`);
     const urlcall = `${API_URL}/Product/SearchForProducts/${query}`.toString();
     const response = await fetch(urlcall);
     const data = await response.json();
-    console.log( query, data)
+
 
 
     return (
