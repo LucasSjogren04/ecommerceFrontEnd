@@ -9,7 +9,7 @@ export default async function Page({ searchParams, }: { searchParams?: { q: stri
   return (
     <>
       <FakeSearch placeholder="Search products..." />
-      <HomePageProductList query={q} />
+      <HomePageProductList />
     </>
   )
 }

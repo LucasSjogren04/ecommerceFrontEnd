@@ -1,17 +1,14 @@
 import { unstable_noStore } from "next/cache";
 import { API_URL, pictureURL } from "../config";
 import SmallProduct from "./smallProduct";
-export default async function HomePageProductList({ query = "" }: { query?: string; }) {
+export default async function HomePageProductList() {
     unstable_noStore();
-    const response = await fetch(`${API_URL}/Product/SearchForProducts/${query}`);
+    const response = await fetch(`${API_URL}/Product/GetHomePageProducts`);
     const data = await response.json();
 
     return (
         <>
-            <div>
-                <p className="text-center font-light text-4xl">Found {data.length} matches</p>
-            </div>
-            <div className="flex justify-center min-w-full">
+            <div className="grid grid-cols-4 gap-2 p-2">
                 {data?.map((product : any) => (
                     <SmallProduct
                         key={product.productId}

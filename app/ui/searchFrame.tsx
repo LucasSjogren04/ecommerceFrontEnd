@@ -21,7 +21,7 @@ export default function SearchFrame({ query = "" }: { query?: string; }) {
             {apidata &&
                 <>
                     <div>
-                        <p className="text-center font-light text-4xl">Found {apidata.length} matches for {query}</p>
+                        <p className="text-center font-light text-4xl">Found {apidata.length} match(es) for "{query}"</p>
                     </div>
                     <div className="flex justify-center min-w-full">
                         {apidata?.map((product: any) => (

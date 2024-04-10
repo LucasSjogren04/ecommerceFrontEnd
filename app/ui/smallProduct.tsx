@@ -14,11 +14,11 @@ export default function SmallProduct({
     return (
 
         <Link href={`/products/${productURLSlug}`}>
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div className="col-span-4 sm:col-span-3 rounded overflow-hidden shadow-lg">
                 <img src={pictureURL + productPictureURL} alt={productName} className="w-full" />
-                <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">{productName}</div>
-                    <p>{productPrice}</p>
+                <div className="inline">
+                    <p className="text-base inline-flex text-tiny xs:text-tiny xl:text-4xl text-left float-start">{productName}</p>
+                    <p className="text-base text-tiny xs:text-tiny xl:text-4xl text-right float-end">${productPrice}</p>
                 </div>
             </div>
         </Link>
