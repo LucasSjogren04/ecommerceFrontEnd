@@ -1,8 +1,9 @@
 'use client';
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useAdminContext } from "../provider";
+import { useEffect } from "react";
  
-export default function Search({ placeholder }: { placeholder: string }) {
+export default function FakeSearch({ placeholder }: { placeholder: string }) {
   const { searchValue, setsearchValue } = useAdminContext()
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -12,14 +13,20 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   function handleSearch(term: string) {
     setsearchValue(term);
-    const params = new URLSearchParams(searchParams);
-    if (term) {
-      params.set('q', term);
-    } else {
-      params.delete('q');
-    }
-    replace(`${pathname}?${params.toString()}`);
   }
+
+  const handleKeyPress = (event:any) => {
+    if (event.key === 'Enter') {
+      router.push('/search');
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keypress', handleKeyPress);
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  }, []);
  
   return (
     <div className="relative flex flex-1 flex-shrink-0 py-5">
