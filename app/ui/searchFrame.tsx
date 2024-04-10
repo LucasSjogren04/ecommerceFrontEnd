@@ -3,7 +3,7 @@ import { unstable_noStore } from "next/cache";
 import { API_URL, pictureURL } from "../config";
 import SmallProduct from "./smallProduct";
 import { useEffect, useState } from "react";
-export default async function SearchFrame({ query = "" }: { query?: string; }) {
+export default function SearchFrame({ query = "" }: { query?: string; }) {
     const [apidata, setApiData] = useState([]);
     
     useEffect(() => {
@@ -14,8 +14,7 @@ export default async function SearchFrame({ query = "" }: { query?: string; }) {
             setApiData(data);
         }
         searchProducts();
-    }, [query])
-
+    },[query])
 
     return (
         <>
