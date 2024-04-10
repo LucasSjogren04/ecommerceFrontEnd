@@ -14,7 +14,7 @@ export default function SmallProduct({
     return (
 
         <Link href={`/products/${productURLSlug}`}>
-            <div className="col-span-4 sm:col-span-3 rounded overflow-hidden shadow-lg">
+            <div className="col-span-4 rounded overflow-hidden shadow-lg xl:p-5">
                 <img src={pictureURL + productPictureURL} alt={productName} className="w-full" />
                 <div className="inline">
                     <p className="text-base inline-flex text-tiny xs:text-tiny xl:text-4xl text-left float-start">{productName}</p>
