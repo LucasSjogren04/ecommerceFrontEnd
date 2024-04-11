@@ -81,12 +81,12 @@ export default function AdminCreateForm() {
             </div>
             <div className="flex justify-center py-3">
                 <div className="px-2">
-                    <div className="max-w-36 bg-blue-700 flex justify-center cursor-pointer" onClick={submit}>
+                    <div className="min-w-36 bg-blue-700 flex justify-center cursor-pointer rounded" onClick={submit}>
                         <div className="text-center p-5 font-bold">Create New</div>
                     </div>
                 </div>
                 <div className="px-2">
-                    <div className="min-w-36 bg-red-600 flex justify-center cursor-pointer" onClick={() => setCreating(false)}>
+                    <div className="min-w-36 bg-red-600 flex justify-center cursor-pointer rounded" onClick={() => setCreating(false)}>
                         <div className="text-center p-5 font-bold">Cancel</div>
                     </div>
                 </div>

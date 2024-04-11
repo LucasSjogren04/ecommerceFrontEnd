@@ -30,14 +30,14 @@ export default function AdminEditForm() {
                     name: responseData.productName,
                     price: responseData.productPrice.toString(),
                     description: responseData.productDescription,
-                    fileInput: null, 
+                    fileInput: null,
                 });
             } catch (error) {
                 console.error("Error fetching product data:", error);
             }
         };
         GetProductForEdit();
-    },[])
+    }, [])
 
 
     useEffect(() => {
@@ -82,15 +82,37 @@ export default function AdminEditForm() {
     };
     return (
         <div>
-            <input type="text" defaultValue={inputValues.name} onChange={(e) => setInputValues({ ...inputValues, name: e.target.value })}/>
-            <input type="text" defaultValue={inputValues.price} onChange={(e) => setInputValues({ ...inputValues, price: e.target.value })}/>
-            <input type="text" defaultValue={inputValues.description} onChange={(e) => setInputValues({ ...inputValues, description: e.target.value })}/>
-            <input type="file" onChange={handleFileChange}/>
-            <div className="max-w-20 bg-blue-700 flex justify-center cursor-pointer" onClick={submit}>
-                <div className="text-center p-5 font-bold">Update</div>
+            <div className="p-3">
+                <label htmlFor="input">Product name</label>
+                <br />
+                <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.name} onChange={(e) => setInputValues({ ...inputValues, name: e.target.value })} />
             </div>
-            <div className="max-w-20 bg-red-600 flex justify-center cursor-pointer" onClick={() => setEditing(false)}>
-                <div className="text-center p-5 font-bold">Cancel</div>
+            <div className="p-3">
+                <label htmlFor="input">Price</label>
+                <br />
+                <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.price} onChange={(e) => setInputValues({ ...inputValues, price: e.target.value })} />
+            </div>
+            <div className="p-3">
+                <label htmlFor="input">Description</label>
+                <br />
+                <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.description} onChange={(e) => setInputValues({ ...inputValues, description: e.target.value })} />
+            </div>
+            <div className="p-3">
+                <label htmlFor="input">Picture</label>
+                <br />
+                <input className="px-1 outline-dotted" type="file" onChange={handleFileChange} />
+            </div>
+            <div className="flex justify-center py-3">
+                <div className="px-2">
+                    <div className="min-w-36 bg-blue-700 flex justify-center cursor-pointer rounded" onClick={submit}>
+                        <div className="text-center p-5 font-bold">Update </div>
+                    </div>
+                </div>
+                <div className="px-2">
+                    <div className="min-w-36 bg-red-600 flex justify-center cursor-pointer rounded" onClick={() => setEditing(false)}>
+                        <div className="text-center p-5 font-bold">Cancel</div>
+                    </div>
+                </div>
             </div>
         </div>
     )
