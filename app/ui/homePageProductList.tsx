@@ -8,7 +8,7 @@ export default async function HomePageProductList() {
 
     return (
         <>
-            <div className="grid grid-cols-4 gap-2 p-2">
+            <div className="grid grid-cols-4 gap-2 overflow-y-auto max-h-[410px] xl:max-h-[1200px] shadow-xl">
                 {data?.map((product : any) => (
                     <SmallProduct
                         key={product.productId}
@@ -20,6 +20,5 @@ export default async function HomePageProductList() {
                 ))}
             </div>
         </>
-
     );
 }

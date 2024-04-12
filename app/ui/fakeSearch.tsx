@@ -29,12 +29,12 @@ export default function FakeSearch({ placeholder }: { placeholder: string }) {
   }, []);
  
   return (
-    <div className="relative flex flex-1 flex-shrink-0 py-5">
+    <div className="flex flex-col p-4">
       <label htmlFor="search" className="sr-only">
         Search
       </label>
       <input
-        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+        className="peer block w-40 xl:w-96 rounded border border-gray-200 p-2 xl:p-3 text-xs  xl:text-2xl outline-2 xl:outline-8 placeholder:text-gray-500"
         placeholder={placeholder}
         onChange={(e) => {
           handleSearch(e.target.value);
