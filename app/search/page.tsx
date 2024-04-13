@@ -59,7 +59,7 @@ export default function SearchPage({ searchParams, }: { searchParams?: { q: stri
                 </Link>
                 <Search placeholder="Search products..." />
             </div>
-            <div className="p-3 xl:px-9  xl:space-x-4 space-x-2 text-xs xl:text-2xl">
+            <div className="px-3 xl:px-9  xl:space-x-4 space-x-2 text-xs xl:text-2xl">
                 <Link href="http://localhost:3000">Home</Link>
                 <Link href="localhost:3000">Offers</Link>
                 <Link href="localhost:3000">Campaigns</Link>

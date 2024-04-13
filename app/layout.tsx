@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Freaky Fashion",
   description: "Latest and greatest from Freaky Fashion",
   icons: {
-    icon: "ecommerce/public/FreakyFashionLogo.png",
+    icon: "/ecommerce/public/FreakyFashionLogo.png",
   },
 };
 
