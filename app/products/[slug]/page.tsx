@@ -20,12 +20,12 @@ export default async function Product({ params, }: { params: { slug: string } })
                     <img src={pictureURL + data.productPictureURL} alt={data.productName} className="rounded-md xl:max-h-[700px]" />
                 </div>
                 <div className="px-3">
-                    <p className="font-light text-base py-2 whitespace-nowrap">{data.productName}</p>
-                    <p className="font-light text-xs pb-3">{data.productDescription}</p>
-                    <p className="font-light text-xs">${data.productPrice}</p>
-                    <div className="pt-5">
-                        <div className="max-w-24 bg-slate-100 flex justify-center cursor-pointer rounded border-2 border-stone-950">
-                            <div className="text-center text-xs font-light p-1">Add to chart</div>
+                    <p className="font-light text-base xl:text-3xl py-2 whitespace-nowrap">{data.productName}</p>
+                    <p className="font-light text-xs xl:text-xl pb-3 ">{data.productDescription}</p>
+                    <p className="font-light text-xs xl:text-xl">${data.productPrice}</p>
+                    <div className="pt-5 xl:pt-10">
+                        <div className="max-w-24 xl:max-w-36 bg-slate-100 flex justify-center cursor-pointer rounded border-2 border-stone-950">
+                            <div className="text-center text-xs xl:text-xl font-light p-1">Add to chart</div>
                         </div>
                     </div>
                 </div>
