@@ -17,11 +17,6 @@ export default async function Product({ params, }: { params: { slug: string } })
                     <p className="font-light">{data.productDescription}</p>
                 </div>
             </div>
-
-
-
-
-
         </>
     )
 }

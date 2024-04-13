@@ -5,19 +5,23 @@ import spot2 from "@/public/spot2.png"
 import spot3 from "@/public/spot3.png"
 import HomePageProductList from "./ui/homePageProductList";
 import FakeSearch from "./ui/fakeSearch";
+import Link from "next/link"
 export default async function Page({ searchParams, }: { searchParams?: { q: string; }; }) {
   const q = searchParams?.q || '';
 
   return (
     <>
       <div className="py-2 px-3 flex items-center xl:p-8">
+        <Link href="http://localhost:3000">
         <img className="max-w-32 xl:min-w-80" src={fflogo.src} alt="logo" />
+        </Link>
+        
         <FakeSearch placeholder="Search products..." />
       </div>
       <div className="p-3 xl:px-9  xl:space-x-4 space-x-2 text-xs xl:text-2xl">
-        <a href="localhost:3000">Home</a>
-        <a href="localhost:3000">Offers</a>
-        <a href="localhost:3000">Campaigns</a>
+        <Link href="localhost:3000">Home</Link>
+        <Link href="localhost:3000">Offers</Link>
+        <Link href="localhost:3000">Campaigns</Link>
       </div>
       <div className="grid grid-cols-2 p-3 xl:p-8 xl:px-64">
         <div className="p-1 pr-3">

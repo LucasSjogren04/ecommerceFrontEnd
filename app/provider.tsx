@@ -10,6 +10,8 @@ interface AdminContextType {
     setCreating: React.Dispatch<React.SetStateAction<boolean>>;
     deleting: boolean;
     setDeleting: React.Dispatch<React.SetStateAction<boolean>>;
+    doneInitialSearch: boolean;
+    setDoneInitialSearch: React.Dispatch<React.SetStateAction<boolean>>;
     searchValue: string;
     setsearchValue: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -23,6 +25,8 @@ const defaultValues: AdminContextType = {
     setCreating: () => {},
     deleting: false,
     setDeleting: () => {}, 
+    doneInitialSearch: false,
+    setDoneInitialSearch: () => {}, 
     searchValue: "",
     setsearchValue: () => {},
 };
@@ -35,10 +39,12 @@ export function AdminWrapper({children}: { children: React.ReactNode;}) {
     const [deleting, setDeleting] = useState(false);
     const [productForEdit, setProductForEdit] = useState<string>("");
     const [searchValue, setsearchValue] = useState<string>("");
+    const [doneInitialSearch, setDoneInitialSearch] = useState(false)
 
     return(
         <AdminContext.Provider value={{
-            editing, setEditing, productForEdit, setProductForEdit, creating, setCreating, deleting, setDeleting, searchValue, setsearchValue}}>
+            editing, setEditing, productForEdit, setProductForEdit, creating, setCreating, deleting, setDeleting,
+            searchValue, setsearchValue, doneInitialSearch, setDoneInitialSearch}}>
             {children}
         </AdminContext.Provider>
     )

@@ -7,8 +7,6 @@ export default function AdminManager({ children }: { children: React.ReactNode }
     const { editing, creating, deleting, setCreating } = useAdminContext();
     return (
         <>
-
-
             {!editing && !creating && !deleting &&
                 <>
                     <div className="py-2 px-7 xl:py-3 xl:pr-96 flex justify-end">

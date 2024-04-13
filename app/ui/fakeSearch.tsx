@@ -4,12 +4,12 @@ import { useAdminContext } from "../provider";
 import { useEffect } from "react";
  
 export default function FakeSearch({ placeholder }: { placeholder: string }) {
-  const { searchValue, setsearchValue } = useAdminContext()
+  const { searchValue, setsearchValue, setDoneInitialSearch } = useAdminContext()
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
   const router = useRouter();
-
+  setDoneInitialSearch(false);
 
   function handleSearch(term: string) {
     setsearchValue(term);
@@ -17,6 +17,7 @@ export default function FakeSearch({ placeholder }: { placeholder: string }) {
 
   const handleKeyPress = (event:any) => {
     if (event.key === 'Enter') {
+      setDoneInitialSearch(false);
       router.push('/search');
     }
   };
