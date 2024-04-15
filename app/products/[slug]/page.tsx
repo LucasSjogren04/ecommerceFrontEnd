@@ -3,10 +3,24 @@ import fflogo from "@/public/FreakyFashionLogo.png"
 import FakeSearch from "@/app/ui/fakeSearch";
 import { API_URL, pictureURL } from "../../config";
 
+import type { Metadata, ResolvingMetadata } from 'next'
+ 
+
+ 
+export async function generateMetadata({ params, }: { params: { slug: string } }): Promise<Metadata> {
+    
+  const product = await fetch(`${API_URL}/Product/GetProductbySlug/${params.slug}`).then((res) => res.json())
+  return {
+    title: product.productName,
+  }
+}
+
 export default async function Product({ params, }: { params: { slug: string } }) {
 
     const response = await fetch(`${API_URL}/Product/GetProductbySlug/${params.slug}`);
     const data = await response.json();
+
+
     return (
         <>
             <div className="py-2 px-3 flex items-center xl:p-8">

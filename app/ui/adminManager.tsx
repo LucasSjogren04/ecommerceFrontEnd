@@ -8,14 +8,16 @@ export default function AdminManager({ children }: { children: React.ReactNode }
     return (
         <>
             {!editing && !creating && !deleting &&
-                <>
+                <div className="">
                     <div className="py-2 px-7 xl:py-3 xl:pr-96 flex justify-end">
                         <div className="bg-gray-400 cursor-pointer max-w-24 xl:max-w-36" onClick={() => setCreating(true)}>
                             <div className="text-xs text-center p-2 font-light xl:text-lg">New Product</div>
                         </div>
                     </div>
-                    {children}
-                </>
+                    <div className="">
+                        {children}
+                    </div>
+                </div>
             }
             {editing &&
                 <AdminEditForm />
@@ -26,6 +28,7 @@ export default function AdminManager({ children }: { children: React.ReactNode }
             {deleting &&
                 <AdminDeletePopUp />
             }
+            
         </>
     )
 }
