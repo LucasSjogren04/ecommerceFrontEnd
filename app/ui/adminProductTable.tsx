@@ -1,5 +1,4 @@
-import { table } from "console"
-import { SearchForProducts } from "../lib/data"
+
 import { API_URL } from "../config"
 import AdminEditButton from "./adminEditButton"
 import AdminDeleteButton from "./adminDeleteButton"
@@ -11,35 +10,52 @@ export default async function AdminProductTable() {
     const response = await fetch(`${API_URL}/Product/GetListOfAllProducts/`);
     const responseData = await response.json();
     return (
-
-        <div className="flex justify-center  text-tiny xl:text-lg">
-            <table className="shadow-2xl rounded-2xl">
-                <thead className="bg-cyan-400">
-                    <tr className="">
-                        <th className="px-1 py-1 xl:px-3">ProductId</th>
-                        <th className="px-1 py-1 xl:px-3">ProductName</th>
-                        <th className="px-1 py-1 xl:px-3">ProductPrice</th>
-                        <th className="px-1 py-1 xl:px-3">ProductPictureURL</th>
-                        <th className="whitespace-nowrap py-3 pl-6 pr-3">Actions</th>
-                    </tr>
-                </thead>
-                <tbody className="bg-slate-200">
-                    {responseData?.map((results: any) => (
-                        <tr key={results.ProductId} className="hover:bg-slate-400 cursor-pointer">
-                            <td className="px-1 py-1 xl:px-3">{results.productId}</td>
-                            <td className="px-1 py-1 xl:px-3">{results.productName}</td>
-                            <td className="px-1 py-1 xl:px-3">{results.productPrice}</td>
-                            <td className="px-1 py-1 xl:px-3">{results.productPictureURL}</td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                <div className="flex justify-end gap-3">
-                                    <AdminEditButton productId={results.productId} />
-                                    <AdminDeleteButton productId={results.productId} />
-                                </div>
-                            </td>
+        <div className="pl-72 pr-6 pt-4">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                Product name
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                SKU
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                Price
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                <span className="sr-only">Edit</span>
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                <span className="sr-only">Delete</span>
+                            </th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {responseData?.map((results: any) => (
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {results.productName}
+                                </th>
+                                <td className="px-6 py-4">
+                                    {results.sku}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {results.productPrice}
+                                </td>
+                                <td className="px-6 py-4 text-right">
+                                    <AdminEditButton productId={results.productId} />
+                                </td>
+                                <td className="px-6 py-4 text-right">
+                                    <AdminDeleteButton productId={results.productId} />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
+
     )
 }

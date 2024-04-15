@@ -5,6 +5,7 @@ import { API_URL } from "../config";
 export default function AdminEditForm() {
     interface InputsWithStateState {
         name: string;
+        sku: string;
         price: string;
         description: string;
         fileInput: File | null;
@@ -13,6 +14,7 @@ export default function AdminEditForm() {
     const [submiting, setSubmiting] = useState(false)
     const [inputValues, setInputValues] = useState<InputsWithStateState>({
         name: '',
+        sku: '',
         price: '',
         description: '',
         fileInput: null,
@@ -28,6 +30,7 @@ export default function AdminEditForm() {
                 const responseData = await response.json();
                 setInputValues({
                     name: responseData.productName,
+                    sku: responseData.productName,
                     price: responseData.productPrice.toString(),
                     description: responseData.productDescription,
                     fileInput: null,
@@ -46,6 +49,7 @@ export default function AdminEditForm() {
             const formData = new FormData();
             formData.append('ProductId', productForEdit);
             formData.append('ProductName', inputValues.name);
+            formData.append('SKU', inputValues.name);
             formData.append('ProductPrice', inputValues.price);
             formData.append('ProductDescription', inputValues.description);
             if (inputValues.fileInput) {
@@ -86,6 +90,11 @@ export default function AdminEditForm() {
                 <label htmlFor="input">Product name</label>
                 <br />
                 <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.name} onChange={(e) => setInputValues({ ...inputValues, name: e.target.value })} />
+            </div>
+            <div className="p-3">
+                <label htmlFor="input">SKU</label>
+                <br />
+                <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.sku} onChange={(e) => setInputValues({ ...inputValues, sku: e.target.value })} />
             </div>
             <div className="p-3">
                 <label htmlFor="input">Price</label>
