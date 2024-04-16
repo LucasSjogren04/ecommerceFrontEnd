@@ -6,17 +6,24 @@ import { useContext, useEffect, useState } from "react";
 import { useAdminContext } from "../provider";
 export default function SearchFrame({ query = "" }: { query?: string; }) {
     const [apidata, setApiData] = useState([]);
-    const {searchValue} = useAdminContext()
-    
+    const { searchValue, setsearchValue } = useAdminContext()
+
     useEffect(() => {
-        const searchProducts = async() => {
+        const searchProducts = async () => {
             unstable_noStore();
-            const response = await fetch(`${API_URL}/Product/SearchForProducts/${searchValue}`);
-            const data = await response.json();
-            setApiData(data);
+            if (searchValue !== undefined) {
+                const response = await fetch(`${API_URL}/Product/SearchForProducts/${searchValue}`);
+                const data = await response.json();
+                setApiData(data);
+            } else {
+                setsearchValue("");
+                const response = await fetch(`${API_URL}/Product/SearchForProducts/`);
+                const data = await response.json();
+                setApiData(data);
+            }
         }
         searchProducts();
-    },[searchValue])
+    }, [searchValue])
 
     return (
         <>

@@ -49,7 +49,7 @@ export default function AdminEditForm() {
             const formData = new FormData();
             formData.append('ProductId', productForEdit);
             formData.append('ProductName', inputValues.name);
-            formData.append('SKU', inputValues.name);
+            formData.append('SKU', inputValues.sku);
             formData.append('ProductPrice', inputValues.price);
             formData.append('ProductDescription', inputValues.description);
             if (inputValues.fileInput) {
@@ -85,32 +85,30 @@ export default function AdminEditForm() {
         setInputValues({ ...inputValues, fileInput: file });
     };
     return (
-        <div>
-            <div className="p-3">
-                <label htmlFor="input">Product name</label>
-                <br />
-                <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.name} onChange={(e) => setInputValues({ ...inputValues, name: e.target.value })} />
+        <div className="px-96">
+             <div className="px-96 pt-20">
+                <div className="mb-6">
+                    <label htmlFor="default-input" className="block mb-2 text-sm font-medium">Product name</label>
+                    <input type="text" defaultValue={inputValues.name} onChange={(e) => setInputValues({ ...inputValues, name: e.target.value })} className="block w-full p-2 border-2 text-gray-900  border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 " />
+                </div>
+                <div className="mb-6">
+                    <label htmlFor="default-input" className="block mb-2 text-sm font-medium">SKU</label>
+                    <input type="text" defaultValue={inputValues.sku} onChange={(e) => setInputValues({ ...inputValues, sku: e.target.value })} className="bg-gray-50 p-2 border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full " />
+                </div>
+                <div>
+                    <label htmlFor="default-input" className="block mb-2 text-sm font-medium">Price</label>
+                    <input type="text" defaultValue={inputValues.price} onChange={(e) => setInputValues({ ...inputValues, price: e.target.value })} className="block w-full p-2 border-2 text-gray-900  border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div>
+                    <label htmlFor="large-input" className="block mb-2 text-sm font-medium">Description</label>
+                    <textarea defaultValue={inputValues.description} onChange={(e) => setInputValues({ ...inputValues, description: e.target.value })} className="block w-full p-2 border-2 min-h-64 text-gray-900  border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div>
+                    <label className="block mb-2 text-sm font-medium" htmlFor="file_input">Picture</label>
+                    <input onChange={handleFileChange} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 " id="file_input" type="file" />
+                </div>
             </div>
-            <div className="p-3">
-                <label htmlFor="input">SKU</label>
-                <br />
-                <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.sku} onChange={(e) => setInputValues({ ...inputValues, sku: e.target.value })} />
-            </div>
-            <div className="p-3">
-                <label htmlFor="input">Price</label>
-                <br />
-                <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.price} onChange={(e) => setInputValues({ ...inputValues, price: e.target.value })} />
-            </div>
-            <div className="p-3">
-                <label htmlFor="input">Description</label>
-                <br />
-                <input className="px-1 outline-dotted" type="text" defaultValue={inputValues.description} onChange={(e) => setInputValues({ ...inputValues, description: e.target.value })} />
-            </div>
-            <div className="p-3">
-                <label htmlFor="input">Picture</label>
-                <br />
-                <input className="px-1 outline-dotted" type="file" onChange={handleFileChange} />
-            </div>
+            
             <div className="flex justify-center py-3">
                 <div className="px-2">
                     <div className="min-w-36 bg-blue-700 flex justify-center cursor-pointer rounded" onClick={submit}>

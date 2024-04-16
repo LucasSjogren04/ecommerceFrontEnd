@@ -18,7 +18,13 @@ export default function Admin() {
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
                         <li>
-                            <Link href="admin/new" className="flex items-center py-2 lg:text-xl rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group text-white">
+                            <Link href="http://localhost:3000/admin" className="flex items-center py-2 lg:text-xl rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group text-white">
+                                <span className="ms-3">Dashboard</span>
+
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="http://localhost:3000/admin/new" className="flex items-center py-2 lg:text-xl rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group text-white">
                                 <span className="ms-3">Add Product</span>
                             </Link>
                         </li>

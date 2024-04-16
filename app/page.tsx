@@ -50,7 +50,7 @@ export default async function Page() {
           </div>
         </a>
       </div>
-      <div className="p-2 xl:px-64">
+      <div className="p-2 xl:px-96">
         <HomePageProductList />
       </div>
       <div className="flex justify-center space-x-2 text-tiny xl:text-2xl py-2">

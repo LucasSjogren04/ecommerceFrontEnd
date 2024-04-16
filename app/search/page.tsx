@@ -65,6 +65,41 @@ export default function SearchPage({ searchParams, }: { searchParams?: { q: stri
                 <Link href="localhost:3000">Campaigns</Link>
             </div>
             <SearchFrame query={searchParams?.q} />
+            <hr />
+      <div className="flex justify-around text-tiny py-2 xl:py-8">
+        <div className="">
+            <div>
+                <h2 className="font-light text-xs pb-1 xl:text-4xl">Shopping</h2>
+                <ul className="xl:text-xl">
+                    <li>Winter Jackets</li>
+                    <li>Puffer Jackets</li>
+                    <li>Anoraks</li>
+                    <li>Trenchcoat</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2 className="font-light text-xs pb-1 xl:text-4xl">Profile</h2>
+                <ul className="xl:text-xl">
+                    <li>My orders</li>
+                    <li>My account</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2 className="font-light text-xs pb-1 xl:text-4xl">Customer service</h2>
+                <ul className="xl:text-xl">
+                    <li>Return policy</li>
+                    <li>Our commitment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="text-center text-tiny xl:text-xl pb-2">
+        ©Freaky Fashion
+      </div>
         </>
     )
 }

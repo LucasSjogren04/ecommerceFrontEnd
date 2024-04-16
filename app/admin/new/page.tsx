@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAdminContext } from "@/app/provider"
 import { API_URL } from "@/app/config";
@@ -61,32 +62,57 @@ export default function AdminCreateForm() {
         setInputValues({ ...inputValues, fileInput: file });
     };
     return (
-        <div>
-            <div className="p-3">
-                <label htmlFor="input">Product name</label>
-                <br />
-                <input className="px-1 outline-dotted" type="text" onChange={(e) => setInputValues({ ...inputValues, name: e.target.value })} />
+        <>
+         <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 text-white">
+                <div className="px-3 py-3 lg:px-5 lg:pl-3">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-start rtl:justify-end">
+                            <p className="xl:text-4xl">Administration</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+                <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                    <ul className="space-y-2 font-medium">
+                        <li>
+                            <Link href="http://localhost:3000/admin" className="flex items-center py-2 lg:text-xl rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group text-white">
+                                <span className="ms-3">Dashboard</span>
+
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="http://localhost:3000/admin/new" className="flex items-center py-2 lg:text-xl rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group text-white">
+                                <span className="ms-3">Add Product</span>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <div className="px-96 pt-20">
+                <div className="mb-6">
+                    <label htmlFor="default-input" className="block mb-2 text-sm font-medium">Product name</label>
+                    <input type="text" onChange={(e) => setInputValues({ ...inputValues, name: e.target.value })} className="block w-full p-2 border-2 text-gray-900  border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 " />
+                </div>
+                <div className="mb-6">
+                    <label htmlFor="default-input" className="block mb-2 text-sm font-medium">SKU</label>
+                    <input type="text" onChange={(e) => setInputValues({ ...inputValues, sku: e.target.value })} className="bg-gray-50 p-2 border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full " />
+                </div>
+                <div>
+                    <label htmlFor="default-input" className="block mb-2 text-sm font-medium">Price</label>
+                    <input type="text" onChange={(e) => setInputValues({ ...inputValues, price: e.target.value })} className="block w-full p-2 border-2 text-gray-900  border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div>
+                    <label htmlFor="large-input" className="block mb-2 text-sm font-medium">Description</label>
+                    <textarea onChange={(e) => setInputValues({ ...inputValues, description: e.target.value })} className="block w-full p-2 border-2 min-h-64 text-gray-900  border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div>
+                    <label className="block mb-2 text-sm font-medium" htmlFor="file_input">Picture</label>
+                    <input onChange={handleFileChange} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 " id="file_input" type="file" />
+                </div>
             </div>
-            <div className="p-3">
-                <label htmlFor="input">SKU</label>
-                <br />
-                <input className="px-1 outline-dotted" type="text" onChange={(e) => setInputValues({ ...inputValues, sku: e.target.value })} />
-            </div>
-            <div className="p-3">
-                <label htmlFor="input">Price</label>
-                <br />
-                <input className="px-1 outline-dotted" type="text" onChange={(e) => setInputValues({ ...inputValues, price: e.target.value })} />
-            </div>
-            <div className="p-3">
-                <label htmlFor="input">Description</label>
-                <br />
-                <input className="px-1 outline-dotted" type="text" onChange={(e) => setInputValues({ ...inputValues, description: e.target.value })} />
-            </div>
-            <div className="p-3">
-                <label htmlFor="input">Picture</label>
-                <br />
-                <input className="" type="file" onChange={handleFileChange} />
-            </div>
+
             <div className="flex justify-center py-3">
                 <div className="px-2">
                     <div className="min-w-36 bg-blue-700 flex justify-center cursor-pointer rounded" onClick={submit}>
@@ -94,6 +120,7 @@ export default function AdminCreateForm() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+
     )
 }
