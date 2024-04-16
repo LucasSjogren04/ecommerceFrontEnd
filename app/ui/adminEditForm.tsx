@@ -30,7 +30,7 @@ export default function AdminEditForm() {
                 const responseData = await response.json();
                 setInputValues({
                     name: responseData.productName,
-                    sku: responseData.productName,
+                    sku: responseData.sku,
                     price: responseData.productPrice.toString(),
                     description: responseData.productDescription,
                     fileInput: null,
