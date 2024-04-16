@@ -112,14 +112,16 @@ export default function AdminCreateForm() {
                     <input onChange={handleFileChange} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 " id="file_input" type="file" />
                 </div>
             </div>
-
-            <div className="flex justify-center py-3">
-                <div className="px-2">
-                    <div className="min-w-36 bg-blue-700 flex justify-center cursor-pointer rounded" onClick={submit}>
-                        <div className="text-center p-5 font-bold">Create New</div>
+            <Link href="http://localhost:3000/admin">
+                <div className="flex justify-center py-3">
+                    <div className="px-2">
+                        <div className="min-w-36 bg-blue-700 flex justify-center cursor-pointer rounded" onClick={submit}>
+                            <div className="text-center p-5 font-bold">Create New</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Link>
+
         </>
 
     )
